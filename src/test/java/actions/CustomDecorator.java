@@ -193,6 +193,13 @@ public class CustomDecorator implements WebElement {
         return this;
     }
 
+    public WebElement mouseHover(WebElement webElement){
+        System.out.println("Clicking right from mouse: " + element.toString());
+        Actions action = new Actions(driver);
+        action.moveToElement(webElement).perform();
+        return this;
+    }
+
     public void mouseAction() throws AWTException { //AWTException = Abstract Window Toolkit that helps to catch the exception related to window GUI in JAVA.
         System.out.println("Clicking right from mouse: " + element.toString());
         Robot robot = new Robot();

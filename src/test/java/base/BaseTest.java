@@ -33,7 +33,7 @@ public class BaseTest {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setCapability("platformName", "ANY");
                 chromeOptions.setCapability("browserName", "chrome");
-                driver = new RemoteWebDriver(new URL("http://10.96.104.20:4444"), chromeOptions);
+                driver = new RemoteWebDriver(new URL(" http://192.168.0.69:4444"), chromeOptions);
                 break;
 
             case "microsoftedge":
