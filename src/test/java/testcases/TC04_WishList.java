@@ -19,5 +19,6 @@ public class TC04_WishList extends BaseTest {
                 .inputPassword(PasswordEncrypt.decrypt(new UserConfig().getPassword(),new UserConfig().getSecretKey()))
                 .clickBtnLogin();
         driver.get(new URLConfig().getMenTeesUrl());
+        new P04_WishListPage(driver).moveToWishList().isItemDisplayed();
     }
 }
