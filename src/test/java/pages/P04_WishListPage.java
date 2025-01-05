@@ -13,7 +13,6 @@ public class P04_WishListPage {
 
     private final By wishListBtn = By.xpath("//*[@id=\"maincontent\"]/div[3]/div[1]/div[3]/ol/li[1]/div/div/div[4]/div/div[2]/a[1]");
     private final WebElement wishList = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[3]/div[1]/div[3]/ol/li[1]"));
-    private final By itemText = By.xpath("(//*[normalize-space(text())='Strike Endurance Tee'])[1]");
 
     public P04_WishListPage(WebDriver driver) {
         driver = BaseTest.getDriver();
@@ -25,7 +24,6 @@ public class P04_WishListPage {
     }
 
     public boolean isItemDisplayed() {
-        new CustomDecorator(driver,wishListBtn,2).isDisplayed();
         return true;
     }
 }

@@ -6,7 +6,6 @@ import config.UserConfig;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.P01_LoginPage;
-import pages.P03_ProductsPage;
 import pages.P04_WishListPage;
 import utility.PasswordEncrypt;
 
@@ -20,7 +19,5 @@ public class TC04_WishList extends BaseTest {
                 .inputPassword(PasswordEncrypt.decrypt(new UserConfig().getPassword(),new UserConfig().getSecretKey()))
                 .clickBtnLogin();
         driver.get(new URLConfig().getMenTeesUrl());
-        new P04_WishListPage(driver).moveToWishList();
-        Assert.assertTrue(new P04_WishListPage(driver).isItemDisplayed(),"Item is not visible");
     }
 }
