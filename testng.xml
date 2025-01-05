@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium 4 Automation" parallel="methods" thread-count="3">
+    <test name="QA Automation Firefox">
+        <parameter name="Browser" value="firefox"/>
+        <classes>
+            <class name="testcases.TC01_Login"/>
+        </classes>
+    </test>
+    <test name="QA Automation Chrome">
+        <parameter name="Browser" value="chrome"></parameter>
+        <classes>
+            <class name="testcases.TC01_Login"></class>
+        </classes>
+    </test>
+    <test name="QA Automation Edge">
+        <parameter name="Browser" value="microsoftedge"></parameter>
+        <classes>
+            <class name="testcases.TC01_Login"></class>
+        </classes>
+    </test>
+</suite>
