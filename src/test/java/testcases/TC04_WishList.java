@@ -22,4 +22,16 @@ public class TC04_WishList extends BaseTest {
         new P04_WishListPage(driver).moveToWishList();
         Assert.assertTrue(new P04_WishListPage(driver).isItemDisplayed(), "Item is not visible");
     }
-}
+
+        @Test (priority = 1)
+        public void verifyWishlistMessage() throws Exception {
+            driver.get(new URLConfig().getAccountUrl());
+            System.out.println(PasswordEncrypt.decrypt("sLuYtt1lufwDHdIkDXF1jg==","9KeMQYj2zuTb7locbQ06yg=="));
+            new P01_LoginPage(driver).handleCookie().inputUserName(new UserConfig().getUsername())
+                    .inputPassword(PasswordEncrypt.decrypt(new UserConfig().getPassword(),new UserConfig().getSecretKey()))
+                    .clickBtnLogin();
+            driver.get(new URLConfig().getMenTeesUrl());
+            new P04_WishListPage(driver).clickWishList().isItemMessageDisplayed();
+        }
+
+    }
