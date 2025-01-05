@@ -2,7 +2,6 @@ package pages;
 
 import actions.CustomDecorator;
 import base.BaseTest;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +25,9 @@ public class P03_ProductsPage {
             By.xpath("//div[@aria-label=\"Red\"]");
     private final By selectColor =
             By.xpath("(//div[@class=\"product details product-item-details\"]//div[@class=\"swatch-attribute color\"]/div/div[@aria-checked=\"true\"])[1]");
-    private  final By itemLabel = By.xpath("//*[@id=\"maincontent\"]/div[2]/div/div[1]/div[1]/h1/span");
+    private  final By cartBtn = By.xpath("//*[@id=\"maincontent\"]/div[3]/div[1]/div[3]/ol/li[1]/div/div/div[4]/div/div[1]/form/button");
+    private final By warningMsg = By.xpath("//*[@id=\"maincontent\"]/div[1]/div[2]/div/div");
+
     public P03_ProductsPage(WebDriver driver) {
         driver = BaseTest.getDriver();
     }
@@ -85,6 +86,24 @@ public class P03_ProductsPage {
       new CustomDecorator(driver, proText, 2000)
               .mouseAction();
       return this;
+    }
+
+    public P03_ProductsPage moveToProduct() {
+        new CustomDecorator(driver,proText,2000)
+                .mouseHover(productText);
+        new CustomDecorator(driver,proText, 5).isDisplayed();
+        return this;
+    }
+
+    public P03_ProductsPage clickAddToCart() {
+        new CustomDecorator(driver,cartBtn,2000)
+                .click();
+        return this;
+    }
+
+    public boolean isWarningDisplayed() {
+        new CustomDecorator(driver,cartBtn,2000).isDisplayed();
+        return true;
     }
 
     public P03_ProductsPage moveToNewTab() {

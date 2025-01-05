@@ -2,10 +2,12 @@ package testcases;
 
 import base.BaseTest;
 import config.URLConfig;
+import config.UserConfig;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.P01_LoginPage;
 import pages.P03_ProductsPage;
+import utility.PasswordEncrypt;
 
 import java.util.ArrayList;
 
@@ -72,5 +74,17 @@ public class TC03_Products extends BaseTest {
         new P01_LoginPage(driver).handleCookie();
         new P03_ProductsPage(driver).getRedShirts();
         Assert.assertTrue(new P03_ProductsPage(driver).getCheckedColor());
+    }
+
+    @Test (priority = 1)
+    public void verifyAddtoCartwithoutSelectingData() throws Exception {
+        driver.get(new URLConfig().getAccountUrl());
+        System.out.println(PasswordEncrypt.decrypt("sLuYtt1lufwDHdIkDXF1jg==","9KeMQYj2zuTb7locbQ06yg=="));
+        new P01_LoginPage(driver).handleCookie().inputUserName(new UserConfig().getUsername())
+                .inputPassword(PasswordEncrypt.decrypt(new UserConfig().getPassword(),new UserConfig().getSecretKey()))
+                .clickBtnLogin();
+        driver.get(new URLConfig().getMenTeesUrl());
+        new P03_ProductsPage(driver).moveToProduct().clickAddToCart();
+        Assert.assertTrue(new P03_ProductsPage(driver).isWarningDisplayed(),"Warning message is not visible");
     }
 }
